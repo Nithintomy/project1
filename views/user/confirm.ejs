@@ -1,0 +1,155 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Order Placed Successfully</title>
+
+	 <!-- Bootstrap CSS -->
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+JQLhRtF/6OVvW0U8eDkXwoXjk9LJvM" crossorigin="anonymous">
+
+	 <link rel="stylesheet" href="/public/user/css/addressShow.css">
+
+
+	 <link rel="stylesheet" href="/user/css/style.css">
+   
+    
+    <!-- Custom CSS -->
+    <style>
+      .jumbotron {
+        background-color: #fff;
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+        border-radius: 0.3rem;
+        text-align: center;
+      }
+      
+      .btn-primary {
+        background-color: #008CBA;
+        border-color: #008CBA;
+        margin: 10px;
+      }
+      
+      .btn-primary:hover {
+        background-color: #006B87;
+        border-color: #006B87;
+        margin: 10px;
+      }
+      
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 500px;
+      }
+      
+      h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+      
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+      
+      hr {
+        border-top: 3px solid #006B87;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 50%;
+      }
+    
+	 section{padding:3% 0}
+	.alizarin{background:#e74c3c}
+	.amethyst{background:#9b59b6}
+	.emerald{background:#2ecc71}
+	.midnight-blue{background:#2c3e50}
+	.peter-river{background:#3498db}
+	.dl{background:#f0f0f0;padding:20px 0;border-radius:25px;position:relative}
+	.dl:before{content:" ";height:20px;width:20px;background:#ddd;border-radius:20px;position:absolute;left:50%;top:20px;margin-left:-10px}
+	.dl .brand{text-transform:uppercase;letter-spacing:3px;padding:10px 15px;margin-top:10px;text-align:center;min-height:100px}
+	.dl .discount{min-height:15px;position:relative;font-size:40px;line-height:40px;text-align:center;font-weight:500;padding:15px 15px 0;color:#f1c40f}
+	.dl .discount:after{content:" ";border-right:20px solid transparent;border-left:20px solid transparent;position:absolute;bottom:-20px;left:80%}
+	.dl .discount.alizarin:after{border-top:20px solid #e74c3c}
+	.dl .discount.peter-river:after{border-top:20px solid #3498db}
+	.dl .discount.emerald:after{border-top:20px solid #2ecc71}
+	.dl .discount.amethyst:after{border-top:20px solid #9b59b6}
+	.dl .discount .type{font-size:20px;letter-spacing:1px;text-transform:uppercase;margin-top:-30px}
+	.dl .descr{color:#999;margin-top:10px;padding:20px 15px}
+	.dl .ends{padding:0 15px;color:#f1c40f;margin-bottom:10px}
+	.dl .coupon{min-height:50px;text-align:center;text-transform:uppercase;font-weight:700;font-size:18px;padding:20px 15px}
+	.dl .coupon a.open-code{color:#16a085}
+	.dl .coupon .code{letter-spacing:1px;border-radius:4px;margin-top:10px;padding:10px 15px;color:#f1c40f;background:#f0f0f0}
+	</style>
+	
+	
+
+</html>
+<body>
+
+	
+
+    <div class="container mt-5">
+
+		
+		  
+		  
+
+
+
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+          <div class="jumbotron">
+            <img src="https://xenoapp.com/wp-content/uploads/2020/01/Signs-of-a-Satisfied-Customer.png" alt="Order Placed" />
+            <h1>Order Placed Successfully</h1>
+            <p>Thank you for your order!</p>
+            <hr>
+            <p>To view your order status or track your shipment, please check your email for updates.</p>
+            <div class="card-body">
+                <a href="/shop" class="btn btn-primary btn-lg">Continue Shopping</a>
+                <a href="/order/<%= User._id %>" class="btn btn-primary btn-lg">View Orders</a>
+              </div>
+              
+          </div>
+        </div>
+      </div>
+
+	  <div class="col-lg-6 col-lx-4"> 
+		<div class="address-list-container">
+			<ul class="address-list list-group">
+				<form action="">
+				  <li class="address-item list-group-item">
+					<div class="address-details">
+					  <span class="address-name">Fullname: <%= specifiedAddress.firstName %> <%= specifiedAddress.lastName %> </span>
+					  <span class="address-info">Address: <%= specifiedAddress.address %> </span>
+					  <span class="address-info">Phone: <%= specifiedAddress.phone %> </span>
+					  <span class="address-info">Pincode: <%= specifiedAddress.pincode %> </span>	
+					  <span class="address-info">City: <%= specifiedAddress.city %> </span>
+					  <span class="address-info">Email: <%= specifiedAddress.email%></span>
+					</div>
+				   
+				  </li>
+				</form>
+			</ul>
+		</div>
+	  </div>
+
+    </div>
+
+		
+</body>
+</html>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js">
+
+

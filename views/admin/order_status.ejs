@@ -1,0 +1,95 @@
+<%- include('header') %>
+
+            <!-- product Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Product Details</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No:</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">date</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">quantity</th>
+                                            <th scope="col">total</th>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">status</th>
+                                            <th scope="col">Action</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% order_data.forEach(function(orders,index) { %>
+                                        <tr>
+                                
+                                            <td><%= index+1 %></td>
+                                            <td><%= orders.user.name %></td>
+
+                                            <td><%= orders.createdAt.toLocaleDateString() %></td>
+
+                                            <td >
+                                                <div class="order_pro">
+                                                     <% orders.items.forEach((items) =>{ %>
+                                                         <%= items.product.name %> <br>
+                                                     <% }) %>
+                                                </div>
+                                            </td>
+                                                 
+                                            <td>
+                                                <% orders.items.forEach((items) =>{ %>
+
+                                                    <%= items.quantity %> <br>
+                                                <% }) %>
+                                            </td>
+                                            <td>
+                                                 ₹<%= orders.total%>
+                                            </td>
+                                            <td>
+                                                <% orders.items.forEach((items) =>{ %>
+
+                                                     <img src="/<%= items.product.photo[0] %>" class="img-thumbnail" width="40px" alt=""> <br>
+                                                <% }) %>
+                                            </td>
+                                            <td>
+                                                <%= orders.status%>
+                                                <div>
+                                                    
+                                                    <a type="submit" href="/orderdetail/<%= orders._id %>" class="btn btn-light">Details</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pencil-alt"></i>Edit</a>
+                                                <div class="dropdown-menu bg-transparent border-0">
+                                                    <form action="/order_update/<%= orders._id %>" method="post">
+                                                        <select name="status">
+                                                            
+                                                            <option value="Pending" <% if (orders.status === 'Pending') { %>selected<% } %>>Pending</option>
+                                                            <option value="Shipped" <% if (orders.status === 'Shipped') { %>selected<% } %>>Shipped</option>
+                                                            <option value="Delivered" <% if (orders.status === 'delivered') { %>selected<% } %>>Delivered</option>
+                                                            <option value="cancelled" <% if (orders.status === 'cancelled') { %>selected<% } %>>Cancel</option>
+                                                          </select>
+                                                          <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                          <% }) %>
+                            
+                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- product End -->
+
+           
+
+
+   <%- include('footer') %>

@@ -1,0 +1,202 @@
+<%- include('header') %>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+	height{
+
+height: 100vh;
+}
+
+.form{
+
+position: relative;
+}
+
+.form .fa-search{
+
+position: absolute;
+top:20px;
+left: 20px;
+color: #9ca3af;
+
+}
+
+.form span{
+
+	position: absolute;
+right: 17px;
+top: 13px;
+padding: 2px;
+border-left: 1px solid #d1d5db;
+
+}
+
+.left-pan{
+padding-left: 7px;
+}
+
+.left-pan i{
+
+padding-left: 10px;
+}
+
+.form-input{
+
+height: 55px;
+text-indent: 33px;
+border-radius: 10px;
+}
+
+.form-input:focus{
+
+box-shadow: none;
+border:none;
+}
+</style>
+
+
+  <section class="ftco-section">
+	  <div class="container">
+		<button type="button" class="btn btn-outline-success">Sort</button>
+		<button type="button" class="btn btn-outline-success ml-3">Filter</button>
+		
+		<form action="/search_product" method="post">
+			
+		<div class="container">
+			<div class="row height d-flex justify-content-center align-items-center">
+				
+			  <div class="col-md-6">
+				<div class="form">
+					
+				  <i class="fa fa-search"></i>
+				  <input type="search" class="form-control form-input" placeholder="Search" name="product" required="" >
+				  
+				  <span class="left-pan"><i class="fa fa-microphone"></i></span>
+				  <input type="submit" value="Search">
+				
+				</div>
+				</div>
+			
+				
+		
+			  
+			</div>
+
+			
+		  </div>
+		</form>
+		  <br>
+		  <br>
+
+		
+		  <div class="row justify-content-center">
+		
+			  <div class="col-md-10 mb-5 text-center">
+				  <ul class="product-category">
+					  <li><a href="/shop" class="active">All</a></li>
+					  <li><a href="#">Apple</a></li>
+					  <li><a href="#">HP</a></li>
+					  <li><a href="#">Acer</a></li>
+					  <li><a href="#">MSI</a></li>
+				  </ul>
+			  </div>
+		  </div>
+		  <div class="row">
+			<% if (products.length > 0) { %>
+				<% products.forEach(function(product) { %>
+			  <div class="col-md-6 col-lg-3 ftco-animate">
+			
+				  <div class="product">
+					
+					  <a href="/single_product/<%= product._id %>" class="img-prod"><img class="img-fluid" src="/<%= product.photo[0] %>" alt="Colorlib Template">
+						  <span class="status">30%</span>
+						  <div class="overlay"></div>
+					  </a>
+					  <div class="text py-3 pb-4 px-3 text-center">
+						  <h3><a href="#"><%= product.name %></a></h3>
+						  <div class="d-flex">
+							  <div class="pricing">
+								  <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale"><%= product.price %></span></p>
+							  </div>
+						  </div>
+						  <div class="bottom-area d-flex px-3">
+							  <div class="m-auto d-flex">
+								  <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+									  <span><i class="ion-ios-menu"></i></span>
+								  </a>
+								  <% if (locals.User) { %>
+									<form action="/addtocart/<%= product._id %>" method="post">
+								  <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+									  <span><i class="ion-ios-cart"></i></span>
+								  </a>
+								</form>
+								<% } else { %>
+									<button type="button" ONCLICK="alert('you need to Login first!')" ><i class="ion-ios-cart"></i></button>
+									<% } %>	
+								  <a href="#" class="heart d-flex justify-content-center align-items-center ">
+									  <span><i class="ion-ios-heart"></i></span>
+								  </a>
+							  </div>
+						  </div>
+					  </div>
+				
+				  </div>
+				 
+			  </div>
+			  <% }); %>
+			  <% } else { %>
+				<p>No products found.</p>
+			  <% } %>
+			  
+			  
+			  
+
+
+		  </div>
+		  <div class="row mt-5">
+		<div class="col text-center">
+		  <div class="block-27">
+			<ul>
+			  <li><a href="#">&lt;</a></li>
+			  <li class="active"><span>1</span></li>
+			  <li><a href="#">2</a></li>
+			  <li><a href="#">3</a></li>
+			  <li><a href="#">4</a></li>
+			  <li><a href="#">5</a></li>
+			  <li><a href="#">&gt;</a></li>
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	  </div>
+  </section>
+
+		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+          	<h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+          	<span>Get e-mail updates about our latest shops and special offers</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control" placeholder="Enter email address">
+                <input type="submit" value="Subscribe" class="submit px-3">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+	<script>
+        setTimeout(() => {
+
+            document.getElementById('msg').style.display="none"
+            
+        }, 3000);
+    </script>
+
+
+	<%- include('footer') %>
